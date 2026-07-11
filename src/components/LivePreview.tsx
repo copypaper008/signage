@@ -11,8 +11,8 @@ const STRIPE_COUNT = 10
 
 export function LivePreview() {
   const {
-    widthIn,
-    heightIn,
+    widthMm,
+    heightMm,
     corner,
     frameColor,
     faceColor,
@@ -27,9 +27,9 @@ export function LivePreview() {
 
   const availW = STAGE_W - PADDING * 2
   const availH = STAGE_H - AWNING_H - SIDEWALK_H - PADDING
-  const scale = Math.min(availW / widthIn, availH / heightIn)
-  const w = widthIn * scale
-  const h = heightIn * scale
+  const scale = Math.min(availW / widthMm, availH / heightMm)
+  const w = widthMm * scale
+  const h = heightMm * scale
   const stripeW = STAGE_W / STRIPE_COUNT
 
   return (
@@ -72,7 +72,7 @@ export function LivePreview() {
         </Layer>
       </Stage>
       <p className="preview-dims">
-        {widthIn}" wide × {heightIn}" tall
+        {widthMm}mm wide × {heightMm}mm tall
       </p>
     </div>
   )

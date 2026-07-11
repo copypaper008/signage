@@ -12,9 +12,9 @@ export interface Placement {
 export interface WizardState {
   step: number
 
-  // Dimensions (inches)
-  widthIn: number
-  heightIn: number
+  // Dimensions (millimeters)
+  widthMm: number
+  heightMm: number
 
   // Shape
   corner: CornerStyle

@@ -16,7 +16,7 @@ function buildQuoteBody(s: ReturnType<typeof useWizardStore.getState>) {
   return [
     'Hi, I designed a custom under-awning lightbox and would like a quote:',
     '',
-    `Size: ${s.widthIn}" wide x ${s.heightIn}" tall`,
+    `Size: ${s.widthMm}mm wide x ${s.heightMm}mm tall`,
     `Shape: ${CORNER_LABEL[s.corner]}`,
     `Frame color: ${s.frameColor}`,
     `Face color: ${s.faceColor}`,
@@ -28,8 +28,8 @@ function buildQuoteBody(s: ReturnType<typeof useWizardStore.getState>) {
 export function StepSummary() {
   const state = useWizardStore()
   const {
-    widthIn,
-    heightIn,
+    widthMm,
+    heightMm,
     corner,
     frameColor,
     faceColor,
@@ -58,7 +58,7 @@ export function StepSummary() {
   }
 
   const baseWidthPx = stageW * 0.32
-  const baseHeightPx = baseWidthPx * (heightIn / widthIn)
+  const baseHeightPx = baseWidthPx * (heightMm / widthMm)
 
   const mailtoHref = `mailto:?subject=${encodeURIComponent(
     'Custom lightbox quote request',
@@ -108,7 +108,7 @@ export function StepSummary() {
         <div>
           <dt>Size</dt>
           <dd>
-            {widthIn}" × {heightIn}"
+            {widthMm}mm × {heightMm}mm
           </dd>
         </div>
         <div>

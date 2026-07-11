@@ -7,7 +7,7 @@ interface WizardActions {
   goBack: () => void
   goToStep: (step: number) => void
 
-  setDimensions: (widthIn: number, heightIn: number) => void
+  setDimensions: (widthMm: number, heightMm: number) => void
   setCorner: (corner: CornerStyle) => void
   setFrameColor: (color: string) => void
   setFaceColor: (color: string) => void
@@ -27,8 +27,8 @@ const initialPlacement: Placement = { x: 0.5, y: 0.5, scale: 1, rotation: 0 }
 
 const initialState: WizardState = {
   step: 0,
-  widthIn: 36,
-  heightIn: 18,
+  widthMm: 900,
+  heightMm: 450,
   corner: 'rounded',
   frameColor: '#2b2b2b',
   faceColor: '#f5f5f0',
@@ -50,7 +50,7 @@ export const useWizardStore = create<WizardState & WizardActions>((set) => ({
   goBack: () => set((s) => ({ step: Math.max(s.step - 1, 0) })),
   goToStep: (step) => set({ step: Math.max(0, Math.min(step, TOTAL_STEPS - 1)) }),
 
-  setDimensions: (widthIn, heightIn) => set({ widthIn, heightIn }),
+  setDimensions: (widthMm, heightMm) => set({ widthMm, heightMm }),
   setCorner: (corner) => set({ corner }),
   setFrameColor: (frameColor) => set({ frameColor }),
   setFaceColor: (faceColor) => set({ faceColor }),

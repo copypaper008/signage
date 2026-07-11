@@ -1,20 +1,20 @@
 import { useWizardStore } from '../../store/wizardStore'
 
 const PRESETS: Array<{ label: string; w: number; h: number }> = [
-  { label: '24" × 12"', w: 24, h: 12 },
-  { label: '36" × 18"', w: 36, h: 18 },
-  { label: '48" × 24"', w: 48, h: 24 },
-  { label: '60" × 24"', w: 60, h: 24 },
+  { label: '600 × 300 mm', w: 600, h: 300 },
+  { label: '900 × 450 mm', w: 900, h: 450 },
+  { label: '1200 × 600 mm', w: 1200, h: 600 },
+  { label: '1500 × 600 mm', w: 1500, h: 600 },
 ]
 
 export function StepDimensions() {
-  const { widthIn, heightIn, setDimensions } = useWizardStore()
+  const { widthMm, heightMm, setDimensions } = useWizardStore()
 
   return (
     <div className="step">
       <h2>What size lightbox do you need?</h2>
       <p className="step-hint">
-        Under-awning lightboxes are typically 12"–30" tall and sized to fit the depth of your
+        Under-awning lightboxes are typically 300mm–750mm tall and sized to fit the depth of your
         awning. You can fine-tune the exact dimensions below.
       </p>
 
@@ -23,7 +23,7 @@ export function StepDimensions() {
           <button
             key={p.label}
             type="button"
-            className={`preset${widthIn === p.w && heightIn === p.h ? ' selected' : ''}`}
+            className={`preset${widthMm === p.w && heightMm === p.h ? ' selected' : ''}`}
             onClick={() => setDimensions(p.w, p.h)}
           >
             {p.label}
@@ -33,23 +33,25 @@ export function StepDimensions() {
 
       <div className="field-row">
         <label className="field">
-          Width (inches)
+          Width (mm)
           <input
             type="number"
-            min={12}
-            max={120}
-            value={widthIn}
-            onChange={(e) => setDimensions(Number(e.target.value) || widthIn, heightIn)}
+            min={300}
+            max={3000}
+            step={10}
+            value={widthMm}
+            onChange={(e) => setDimensions(Number(e.target.value) || widthMm, heightMm)}
           />
         </label>
         <label className="field">
-          Height (inches)
+          Height (mm)
           <input
             type="number"
-            min={8}
-            max={60}
-            value={heightIn}
-            onChange={(e) => setDimensions(widthIn, Number(e.target.value) || heightIn)}
+            min={200}
+            max={1500}
+            step={10}
+            value={heightMm}
+            onChange={(e) => setDimensions(widthMm, Number(e.target.value) || heightMm)}
           />
         </label>
       </div>

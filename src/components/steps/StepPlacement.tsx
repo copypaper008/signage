@@ -16,8 +16,8 @@ export function StepPlacement() {
     resetPlacementForNewPhoto,
     placement,
     setPlacement,
-    widthIn,
-    heightIn,
+    widthMm,
+    heightMm,
     corner,
     frameColor,
     faceColor,
@@ -60,7 +60,7 @@ export function StepPlacement() {
   }
 
   const baseWidthPx = stageW * 0.32
-  const baseHeightPx = baseWidthPx * (heightIn / widthIn)
+  const baseHeightPx = baseWidthPx * (heightMm / widthMm)
   const layerWidth = baseWidthPx * placement.scale
   const layerHeight = baseHeightPx * placement.scale
 
